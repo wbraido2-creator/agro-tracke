@@ -157,7 +157,7 @@ class AgroTrackTester:
             
         # Test invalid credentials
         invalid_login = {
-            "email": "joao.silva@fazenda.com", 
+            "email": self.user1_data["email"] if self.user1_data else "joao.silva@fazenda.com", 
             "password": "senhaerrada"
         }
         
