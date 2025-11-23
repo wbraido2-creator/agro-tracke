@@ -241,6 +241,25 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
   },
+  prazoContainer: {
+    gap: 12,
+  },
+  prazoInput: {
+    flex: 0,
+  },
+  dataPreview: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    padding: 12,
+    borderRadius: 8,
+    gap: 8,
+  },
+  dataPreviewText: {
+    color: '#10b981',
+    fontSize: 14,
+    fontWeight: '600',
+  },
   infoBox: {
     flexDirection: 'row',
     alignItems: 'center',
