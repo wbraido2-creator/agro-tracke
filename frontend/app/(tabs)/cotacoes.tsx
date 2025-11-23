@@ -63,42 +63,57 @@ export default function Cotacoes() {
             tintColor="#10b981"
           />
         }
-        renderItem={({ item }) => (
-          <View style={styles.quotationCard}>
-            <View style={styles.quotationHeader}>
-              <Text style={styles.produto}>{item.produto}</Text>
-              <View
-                style={[
-                  styles.variationBadge,
-                  {
-                    backgroundColor:
-                      item.variacao >= 0
-                        ? 'rgba(16, 185, 129, 0.2)'
-                        : 'rgba(239, 68, 68, 0.2)',
-                  },
-                ]}
-              >
-                <Ionicons
-                  name={item.variacao >= 0 ? 'arrow-up' : 'arrow-down'}
-                  size={16}
-                  color={item.variacao >= 0 ? '#10b981' : '#ef4444'}
-                />
-                <Text
+        renderItem={({ item }) => {
+          const isDolar = item.produto.includes('Dólar');
+          return (
+            <View style={[
+              styles.quotationCard,
+              isDolar && styles.quotationCardDolar
+            ]}>
+              <View style={styles.quotationHeader}>
+                <View style={styles.produtoContainer}>
+                  {isDolar && (
+                    <Ionicons name="cash" size={20} color="#f59e0b" style={styles.produtoIcon} />
+                  )}
+                  <Text style={[styles.produto, isDolar && styles.produtoDolar]}>
+                    {item.produto}
+                  </Text>
+                </View>
+                <View
                   style={[
-                    styles.variacao,
-                    { color: item.variacao >= 0 ? '#10b981' : '#ef4444' },
+                    styles.variationBadge,
+                    {
+                      backgroundColor:
+                        item.variacao >= 0
+                          ? 'rgba(16, 185, 129, 0.2)'
+                          : 'rgba(239, 68, 68, 0.2)',
+                    },
                   ]}
                 >
-                  {item.variacao.toFixed(2)}%
+                  <Ionicons
+                    name={item.variacao >= 0 ? 'arrow-up' : 'arrow-down'}
+                    size={16}
+                    color={item.variacao >= 0 ? '#10b981' : '#ef4444'}
+                  />
+                  <Text
+                    style={[
+                      styles.variacao,
+                      { color: item.variacao >= 0 ? '#10b981' : '#ef4444' },
+                    ]}
+                  >
+                    {item.variacao.toFixed(2)}%
+                  </Text>
+                </View>
+              </View>
+              <View style={styles.quotationBody}>
+                <Text style={[styles.preco, isDolar && styles.precoDolar]}>
+                  R$ {isDolar ? item.preco.toFixed(4) : item.preco.toFixed(2)}
                 </Text>
+                <Text style={styles.unidade}>{item.unidade}</Text>
               </View>
             </View>
-            <View style={styles.quotationBody}>
-              <Text style={styles.preco}>R$ {item.preco.toFixed(2)}</Text>
-              <Text style={styles.unidade}>{item.unidade}</Text>
-            </View>
-          </View>
-        )}
+          );
+        }}
       />
     </View>
   );
