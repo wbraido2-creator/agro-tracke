@@ -164,7 +164,11 @@ export default function Financeiro() {
 
       <TouchableOpacity
         style={styles.fab}
-        onPress={() => setShowExpenseModal(true)}
+        onPress={() => {
+          if (activeTab === 'despesas') setShowExpenseModal(true);
+          else if (activeTab === 'receitas') setShowRevenueModal(true);
+          else setShowDebtModal(true);
+        }}
       >
         <Ionicons name="add" size={32} color="#fff" />
       </TouchableOpacity>
@@ -172,6 +176,16 @@ export default function Financeiro() {
       <AddExpenseModal
         visible={showExpenseModal}
         onClose={() => setShowExpenseModal(false)}
+        onSuccess={loadData}
+      />
+      <AddRevenueModal
+        visible={showRevenueModal}
+        onClose={() => setShowRevenueModal(false)}
+        onSuccess={loadData}
+      />
+      <AddDebtModal
+        visible={showDebtModal}
+        onClose={() => setShowDebtModal(false)}
         onSuccess={loadData}
       />
     </View>
