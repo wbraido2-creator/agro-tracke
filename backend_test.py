@@ -60,7 +60,10 @@ class AgroTrackTester:
             elif method == "DELETE":
                 response = self.session.delete(url, headers=headers)
             elif method == "PATCH":
-                response = self.session.patch(url, json=data, headers=headers)
+                if data:
+                    response = self.session.patch(url, json=data, headers=headers)
+                else:
+                    response = self.session.patch(url, headers=headers)
             else:
                 raise ValueError(f"Unsupported method: {method}")
                 
