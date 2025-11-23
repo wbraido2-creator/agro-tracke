@@ -211,7 +211,7 @@ export default function Financeiro() {
       <FlatList
         data={activeTab === 'despesas' ? expenses : activeTab === 'receitas' ? revenues : debts}
         keyExtractor={(item) => item.id}
-        renderItem={renderExpense}
+        renderItem={renderItem}
         contentContainerStyle={styles.list}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} tintColor="#10b981" />
