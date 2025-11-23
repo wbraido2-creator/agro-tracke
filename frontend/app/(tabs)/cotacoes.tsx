@@ -152,16 +152,32 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: '#334155',
   },
+  quotationCardDolar: {
+    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+    borderColor: '#f59e0b',
+    borderWidth: 2,
+  },
   quotationHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginBottom: 12,
   },
+  produtoContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  produtoIcon: {
+    marginRight: 4,
+  },
   produto: {
     fontSize: 18,
     fontWeight: 'bold',
     color: '#fff',
+  },
+  produtoDolar: {
+    color: '#f59e0b',
   },
   variationBadge: {
     flexDirection: 'row',
