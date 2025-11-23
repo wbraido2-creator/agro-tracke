@@ -24,6 +24,7 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
   const [valor, setValor] = useState('');
   const [credor, setCredor] = useState('');
   const [descricao, setDescricao] = useState('');
+  const [diasVencimento, setDiasVencimento] = useState('30');
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit() {
@@ -32,11 +33,16 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
       return;
     }
 
+    if (!diasVencimento || parseInt(diasVencimento) < 1) {
+      Alert.alert('Erro', 'Informe um prazo válido para o vencimento');
+      return;
+    }
+
     setLoading(true);
     try {
-      // Vencimento padrão: 30 dias a partir de hoje
+      // Calcular vencimento baseado nos dias informados
       const vencimento = new Date();
-      vencimento.setDate(vencimento.getDate() + 30);
+      vencimento.setDate(vencimento.getDate() + parseInt(diasVencimento));
 
       await api.post('/api/debts', {
         valor: parseFloat(valor),
@@ -63,7 +69,16 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
     setValor('');
     setCredor('');
     setDescricao('');
+    setDiasVencimento('30');
   }
+
+  // Calcular data de vencimento
+  const calcularDataVencimento = () => {
+    if (!diasVencimento || parseInt(diasVencimento) < 1) return '';
+    const data = new Date();
+    data.setDate(data.getDate() + parseInt(diasVencimento));
+    return data.toLocaleDateString('pt-BR');
+  };
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
