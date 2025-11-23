@@ -115,9 +115,10 @@ class AgroTrackTester:
             self.log_test("User Registration", False, "Failed to register user")
             
         # Test User 2 - Maria Santos (Milho farmer) 
+        unique_id2 = uuid.uuid4().hex[:8]
         user2_data = {
             "name": "Maria Santos",
-            "email": "maria.santos@agro.com", 
+            "email": f"maria.santos.{unique_id2}@agro.com", 
             "password": "senha456"
         }
         
