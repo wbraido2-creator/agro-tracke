@@ -93,44 +93,21 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
             <Text style={styles.label}>Credor</Text>
             <TextInput
               style={styles.input}
-              placeholder="Nome do credor"
+              placeholder="Nome do credor ou banco"
               placeholderTextColor="#64748b"
               value={credor}
               onChangeText={setCredor}
             />
 
-            <Text style={styles.label}>Cultura</Text>
-            <View style={styles.buttonGroup}>
-              {CULTURAS.map((cult) => (
-                <TouchableOpacity
-                  key={cult}
-                  style={[
-                    styles.optionButton,
-                    cultura === cult && styles.optionButtonActive,
-                  ]}
-                  onPress={() => setCultura(cult)}
-                >
-                  <Text
-                    style={[
-                      styles.optionText,
-                      cultura === cult && styles.optionTextActive,
-                    ]}
-                  >
-                    {cult}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-
-            <Text style={styles.label}>Descrição (opcional)</Text>
+            <Text style={styles.label}>Descrição da Dívida</Text>
             <TextInput
               style={[styles.input, styles.textArea]}
-              placeholder="Detalhes da dívida..."
+              placeholder="Descreva a dívida (ex: Empréstimo safra 2025, Financiamento trator, etc)"
               placeholderTextColor="#64748b"
               value={descricao}
               onChangeText={setDescricao}
               multiline
-              numberOfLines={3}
+              numberOfLines={4}
             />
 
             <View style={styles.infoBox}>
