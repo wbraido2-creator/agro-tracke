@@ -114,6 +114,26 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
               onChangeText={setCredor}
             />
 
+            <Text style={styles.label}>Prazo de Vencimento (dias)</Text>
+            <View style={styles.prazoContainer}>
+              <TextInput
+                style={[styles.input, styles.prazoInput]}
+                placeholder="30"
+                placeholderTextColor="#64748b"
+                value={diasVencimento}
+                onChangeText={setDiasVencimento}
+                keyboardType="number-pad"
+              />
+              {diasVencimento && parseInt(diasVencimento) > 0 && (
+                <View style={styles.dataPreview}>
+                  <Ionicons name="calendar" size={16} color="#10b981" />
+                  <Text style={styles.dataPreviewText}>
+                    Vence em: {calcularDataVencimento()}
+                  </Text>
+                </View>
+              )}
+            </View>
+
             <Text style={styles.label}>Descrição da Dívida</Text>
             <TextInput
               style={[styles.input, styles.textArea]}
@@ -128,7 +148,7 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
             <View style={styles.infoBox}>
               <Ionicons name="information-circle" size={20} color="#3b82f6" />
               <Text style={styles.infoText}>
-                Vencimento padrão: 30 dias a partir de hoje
+                Informe o prazo em dias. Exemplos: 30 (1 mês), 90 (3 meses), 180 (6 meses), 365 (1 ano)
               </Text>
             </View>
 
