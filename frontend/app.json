@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "frontend",
-    "slug": "frontend",
+    "name": "Agro Track",
+    "slug": "agro-track",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "frontend",
-    "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
+    "scheme": "agrotrack",
+    "userInterfaceStyle": "dark",
+    "newArchEnabled": false,
     "ios": {
       "supportsTablet": true
     },
