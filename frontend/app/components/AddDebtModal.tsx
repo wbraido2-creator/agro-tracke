@@ -20,12 +20,9 @@ interface Props {
   onSuccess: () => void;
 }
 
-const CULTURAS = ['Soja', 'Milho', 'Trigo', 'Algodão', 'Aveia', 'Outro'];
-
 export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
   const [valor, setValor] = useState('');
   const [credor, setCredor] = useState('');
-  const [cultura, setCultura] = useState('Soja');
   const [descricao, setDescricao] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -45,7 +42,7 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
         valor: parseFloat(valor),
         credor,
         vencimento: vencimento.toISOString(),
-        cultura,
+        cultura: 'Geral',
         status: 'pendente',
         descricao: descricao || undefined,
       });
@@ -53,9 +50,10 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
       onSuccess();
       onClose();
       resetForm();
-    } catch (error) {
+    } catch (error: any) {
       console.log('Error creating debt:', error);
-      Alert.alert('Erro', 'Não foi possível adicionar a dívida');
+      const errorMsg = error.response?.data?.detail || 'Não foi possível adicionar a dívida';
+      Alert.alert('Erro', errorMsg);
     } finally {
       setLoading(false);
     }
@@ -64,7 +62,6 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
   function resetForm() {
     setValor('');
     setCredor('');
-    setCultura('Soja');
     setDescricao('');
   }
 
