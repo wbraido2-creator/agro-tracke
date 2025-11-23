@@ -112,6 +112,68 @@ export default function Financeiro() {
     );
   }
 
+  function renderRevenue({ item }: { item: Revenue }) {
+    return (
+      <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <View style={styles.cardIconContainer}>
+            <Ionicons name="arrow-up-circle" size={24} color="#10b981" />
+          </View>
+          <View style={styles.cardContent}>
+            <Text style={styles.cardTitle}>{item.tipo}</Text>
+            <Text style={styles.cardSubtitle}>{item.cultura}</Text>
+            {item.descricao && (
+              <Text style={styles.cardDescription}>{item.descricao}</Text>
+            )}
+          </View>
+          <TouchableOpacity onPress={() => confirmDelete(item.id, 'revenue')}>
+            <Ionicons name="trash-outline" size={20} color="#ef4444" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.cardFooter}>
+          <Text style={styles.cardValue}>R$ {item.valor.toFixed(2)}</Text>
+          <Text style={styles.cardDate}>
+            {format(new Date(item.data), "dd/MM/yyyy")}
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
+  function renderDebt({ item }: { item: Debt }) {
+    return (
+      <View style={styles.card}>
+        <View style={styles.cardHeader}>
+          <View style={styles.cardIconContainer}>
+            <Ionicons name="alert-circle" size={24} color="#f59e0b" />
+          </View>
+          <View style={styles.cardContent}>
+            <Text style={styles.cardTitle}>{item.credor}</Text>
+            <Text style={styles.cardSubtitle}>Status: {item.status}</Text>
+            {item.descricao && (
+              <Text style={styles.cardDescription}>{item.descricao}</Text>
+            )}
+          </View>
+          <TouchableOpacity onPress={() => confirmDelete(item.id, 'debt')}>
+            <Ionicons name="trash-outline" size={20} color="#ef4444" />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.cardFooter}>
+          <Text style={styles.cardValue}>R$ {item.valor.toFixed(2)}</Text>
+          <Text style={styles.cardDate}>
+            Vencimento: {format(new Date(item.vencimento), "dd/MM/yyyy")}
+          </Text>
+        </View>
+      </View>
+    );
+  }
+
+  function renderItem({ item }: { item: any }) {
+    if (activeTab === 'despesas') return renderExpense({ item });
+    if (activeTab === 'receitas') return renderRevenue({ item });
+    return renderDebt({ item });
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
