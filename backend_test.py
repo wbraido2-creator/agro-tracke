@@ -9,6 +9,7 @@ import json
 from datetime import datetime, timedelta
 import sys
 import os
+import uuid
 
 # Get backend URL from frontend .env
 def get_backend_url():
