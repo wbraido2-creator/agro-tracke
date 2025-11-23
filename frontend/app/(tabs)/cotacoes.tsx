@@ -201,6 +201,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#10b981',
   },
+  precoDolar: {
+    color: '#f59e0b',
+  },
   unidade: {
     fontSize: 14,
     color: '#64748b',
