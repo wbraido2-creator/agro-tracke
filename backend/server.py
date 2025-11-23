@@ -483,6 +483,7 @@ async def get_b3_quotations():
     # Mock data - In production, integrate with real B3 API
     import random
     
+    # Commodities agrícolas
     base_prices = {
         "Soja": 130.50,
         "Milho": 65.20,
@@ -492,6 +493,8 @@ async def get_b3_quotations():
     }
     
     quotations = []
+    
+    # Adicionar commodities agrícolas
     for produto, base_price in base_prices.items():
         variation = random.uniform(-5, 5)
         current_price = base_price * (1 + variation / 100)
@@ -503,6 +506,19 @@ async def get_b3_quotations():
             "unidade": "R$/sc",
             "data": datetime.utcnow().isoformat()
         })
+    
+    # Adicionar Dólar (USDBRL)
+    dolar_base = 5.85
+    dolar_variation = random.uniform(-2, 2)
+    dolar_price = dolar_base * (1 + dolar_variation / 100)
+    
+    quotations.insert(0, {  # Inserir no início da lista
+        "produto": "Dólar (USDBRL)",
+        "preco": round(dolar_price, 4),
+        "variacao": round(dolar_variation, 2),
+        "unidade": "R$",
+        "data": datetime.utcnow().isoformat()
+    })
     
     return quotations
 
