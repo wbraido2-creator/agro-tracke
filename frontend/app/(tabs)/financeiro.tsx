@@ -12,6 +12,8 @@ import { Ionicons } from '@expo/vector-icons';
 import api from '../utils/api';
 import { Expense, Revenue, Debt } from '../types';
 import AddExpenseModal from '../components/AddExpenseModal';
+import AddRevenueModal from '../components/AddRevenueModal';
+import AddDebtModal from '../components/AddDebtModal';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 
@@ -24,6 +26,8 @@ export default function Financeiro() {
   const [debts, setDebts] = useState<Debt[]>([]);
   const [refreshing, setRefreshing] = useState(false);
   const [showExpenseModal, setShowExpenseModal] = useState(false);
+  const [showRevenueModal, setShowRevenueModal] = useState(false);
+  const [showDebtModal, setShowDebtModal] = useState(false);
 
   useEffect(() => {
     loadData();
