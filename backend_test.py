@@ -293,9 +293,8 @@ class AgroTrackTester:
             
         # Update debt status
         if debt_id:
-            status_data = {"status": "pago"}
-            response, status = self.make_request("PATCH", f"/debts/{debt_id}/status", 
-                                               status_data, token=self.user1_token)
+            response, status = self.make_request("PATCH", f"/debts/{debt_id}/status?status=pago", 
+                                               token=self.user1_token)
             self.log_test("Update Debt Status", status == 200, "Debt status updated to 'pago'")
             
             # Delete debt
