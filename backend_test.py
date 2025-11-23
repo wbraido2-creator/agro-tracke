@@ -87,9 +87,10 @@ class AgroTrackTester:
         print("\n=== Testing Authentication - Register ===")
         
         # Test User 1 - João Silva (Soja farmer)
+        unique_id = uuid.uuid4().hex[:8]
         user1_data = {
             "name": "João Silva",
-            "email": "joao.silva@fazenda.com",
+            "email": f"joao.silva.{unique_id}@fazenda.com",
             "password": "senha123",
             "phone": "+55 11 99999-1234"
         }
