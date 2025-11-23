@@ -518,7 +518,7 @@ class AgroTrackTester:
         # User 2 tries to access User 1's expenses
         response, status = self.make_request("GET", "/expenses", token=self.user2_token)
         
-        if response and isinstance(response, list):
+        if response is not None and isinstance(response, list):
             user2_can_see_user1_data = any(e.get("id") == expense_id for e in response)
             self.log_test("Data Isolation", not user2_can_see_user1_data,
                          "User 2 cannot see User 1's expenses")
