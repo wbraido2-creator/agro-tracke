@@ -101,3 +101,158 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Teste completo do backend do Agro Track - sistema de gestão financeira agrícola com APIs para auth, despesas, receitas, dívidas, talhões, safras, dashboard e cotações B3"
+
+backend:
+  - task: "User Authentication - Register"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ User registration working correctly with 14-day trial period setup. Tested with realistic agricultural user data (João Silva - Soja farmer). Duplicate email prevention working."
+
+  - task: "User Authentication - Login"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ Login functionality working correctly. JWT token generation and validation working. Invalid credentials properly rejected."
+
+  - task: "User Authentication - Get Me"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ Get current user info working correctly. Token validation working. Invalid tokens properly rejected."
+
+  - task: "Expenses CRUD Operations"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ All expenses CRUD operations working: Create (R$ 2500 fertilizer expense), Read (retrieved expenses list), Delete. User authorization working correctly."
+
+  - task: "Revenues CRUD Operations"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ All revenues CRUD operations working: Create (R$ 15000 soja sale), Read (retrieved revenues list), Delete. User authorization working correctly."
+
+  - task: "Debts CRUD Operations"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ All debts CRUD operations working: Create (R$ 8000 bank loan), Read, Update Status (pendente -> pago), Delete. User authorization working correctly."
+
+  - task: "Fields (Talhões) CRUD Operations"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ All fields CRUD operations working: Create (Talhão Norte - 25.5 ha), Read, Delete. Field data properly stored with area and culture information."
+
+  - task: "Harvests CRUD Operations with Productivity Calculation"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ All harvests CRUD operations working: Create (153 sacas), Read, Delete. Productivity calculation working correctly (6.0 sacas/ha = 153 sacas / 25.5 ha). Field validation working."
+
+  - task: "Dashboard Summary Calculations"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ Dashboard summary working correctly: Profit calculation (R$ 7000 = R$ 10000 revenue - R$ 3000 expenses), Revenue grouping by culture, Expense grouping by culture, Pending debts calculation."
+
+  - task: "B3 Quotations Mock API"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ B3 quotations API working correctly. Returns 5 agricultural products (Soja, Milho, Trigo, Algodão, Aveia) with price, variation, unit, and date. **mocked** data with realistic price variations."
+
+  - task: "User Authorization and Data Isolation"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+        - working: true
+          agent: "testing"
+          comment: "✅ User authorization working correctly: Users can only access their own data. Data isolation verified - User 2 cannot see User 1's expenses. Delete authorization working - User 2 cannot delete User 1's data."
+
+frontend:
+  # No frontend testing performed as per instructions
+
+metadata:
+  created_by: "testing_agent"
+  version: "1.0"
+  test_sequence: 1
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "All backend APIs tested and working"
+  stuck_tasks: []
+  test_all: true
+  test_priority: "high_first"
+
+agent_communication:
+    - agent: "testing"
+      message: "Comprehensive backend testing completed successfully. All 34 test cases passed (100% success rate). Tested all APIs mentioned in the review request: Auth (register/login/me), Expenses CRUD, Revenues CRUD, Debts CRUD with status update, Fields CRUD, Harvests CRUD with productivity calculation, Dashboard summary with financial calculations, B3 quotations (mock), and user authorization/data isolation. The Agro Track backend is fully functional and ready for production use."
