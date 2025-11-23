@@ -142,7 +142,7 @@ class AgroTrackTester:
         print("\n=== Testing Authentication - Login ===")
         
         login_data = {
-            "email": "joao.silva@fazenda.com",
+            "email": self.user1_data["email"] if self.user1_data else "joao.silva@fazenda.com",
             "password": "senha123"
         }
         
