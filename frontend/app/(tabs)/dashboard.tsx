@@ -13,8 +13,6 @@ import { LineChart, PieChart } from 'react-native-chart-kit';
 import api from '../utils/api';
 import { DashboardSummary, Field } from '../types';
 import { Ionicons } from '@expo/vector-icons';
-import AddFieldModal from '../components/AddFieldModal';
-import AddHarvestModal from '../components/AddHarvestModal';
 
 const screenWidth = Dimensions.get('window').width;
 
@@ -23,8 +21,6 @@ export default function Dashboard() {
   const [fields, setFields] = useState<Field[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const [showFieldModal, setShowFieldModal] = useState(false);
-  const [showHarvestModal, setShowHarvestModal] = useState(false);
 
   useEffect(() => {
     loadData();
