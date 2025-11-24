@@ -33,6 +33,7 @@ export default function Clima() {
   const [loading, setLoading] = useState(false);
   const [refreshing, setRefreshing] = useState(false);
   const [city, setCity] = useState('São Paulo');
+  const [searchCity, setSearchCity] = useState('São Paulo');
 
   function getWeatherIcon(condition: string) {
     const icons: Record<string, string> = {
