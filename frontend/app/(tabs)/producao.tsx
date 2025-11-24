@@ -107,7 +107,7 @@ export default function Producao() {
                 <View style={styles.productivityBadge}>
                   <Ionicons name="stats-chart" size={16} color="#10b981" />
                   <Text style={styles.productivityText}>
-                    {item.produtividade_media} sacas/ha
+                    {item.produtividade_media}{' sacas/ha'}
                   </Text>
                 </View>
                 <Text style={styles.productivityInfo}>
