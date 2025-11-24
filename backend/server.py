@@ -380,8 +380,31 @@ async def create_field(field: FieldCreate, current_user = Depends(get_current_us
 
 @api_router.get("/fields")
 async def get_fields(current_user = Depends(get_current_user)):
-    fields = await db.fields.find({"user_id": str(current_user["_id"])}).to_list(1000)
-    return [{"id": str(f["_id"]), **{k: v for k, v in f.items() if k != "_id"}} for f in fields]
+    user_id = str(current_user["_id"])
+    fields = await db.fields.find({"user_id": user_id}).to_list(1000)
+    
+    # Enriquecer com produtividade média de cada talhão
+    enriched_fields = []
+    for field in fields:
+        field_id = str(field["_id"])
+        
+        # Buscar todas as safras deste talhão
+        harvests = await db.harvests.find({"user_id": user_id, "field_id": field_id}).to_list(1000)
+        
+        # Calcular produtividade média
+        total_sacas = sum(h["quantidade_sacas"] for h in harvests)
+        num_harvests = len(harvests)
+        produtividade_media = (total_sacas / (field["area_ha"] * num_harvests)) if num_harvests > 0 else 0
+        
+        enriched_fields.append({
+            "id": field_id,
+            **{k: v for k, v in field.items() if k != "_id"},
+            "produtividade_media": round(produtividade_media, 2),
+            "total_safras": num_harvests,
+            "total_sacas": total_sacas
+        })
+    
+    return enriched_fields
 
 @api_router.delete("/fields/{field_id}")
 async def delete_field(field_id: str, current_user = Depends(get_current_user)):
