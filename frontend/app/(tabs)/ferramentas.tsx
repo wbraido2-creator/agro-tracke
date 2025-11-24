@@ -79,7 +79,17 @@ export default function Ferramentas() {
   }
 
   return (
-    <ScrollView style={styles.container}>
+    <KeyboardAvoidingView
+      style={{ flex: 1 }}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={90}
+    >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <ScrollView 
+          style={styles.container}
+          keyboardShouldPersistTaps="handled"
+          contentContainerStyle={{ paddingBottom: 100 }}
+        >
       <View style={styles.header}>
         <Ionicons name="calculator" size={28} color="#10b981" />
         <Text style={styles.headerTitle}>Calculadoras</Text>
