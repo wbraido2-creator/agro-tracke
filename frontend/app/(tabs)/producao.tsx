@@ -149,7 +149,7 @@ export default function Producao() {
         </View>
         <View style={styles.cardFooter}>
           <Text style={styles.cardDate}>
-            Colheita: {format(new Date(item.data_colheita), 'dd/MM/yyyy')}
+            {'Colheita: '}{format(new Date(item.data_colheita), 'dd/MM/yyyy')}
           </Text>
           {item.observacoes && (
             <Text style={styles.cardObservation}>{item.observacoes}</Text>
