@@ -7,11 +7,14 @@ import {
   RefreshControl,
   Dimensions,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import { LineChart, PieChart } from 'react-native-chart-kit';
 import api from '../utils/api';
 import { DashboardSummary } from '../types';
 import { Ionicons } from '@expo/vector-icons';
+import AddFieldModal from '../components/AddFieldModal';
+import AddHarvestModal from '../components/AddHarvestModal';
 
 const screenWidth = Dimensions.get('window').width;
 
