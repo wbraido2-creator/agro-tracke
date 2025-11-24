@@ -136,24 +136,6 @@ export default function Dashboard() {
         </View>
       </View>
 
-      <View style={styles.quickActions}>
-        <TouchableOpacity 
-          style={styles.actionButton}
-          onPress={() => setShowFieldModal(true)}
-        >
-          <Ionicons name="grid" size={24} color="#fff" />
-          <Text style={styles.actionButtonText}>{'Adicionar Talhão'}</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={styles.actionButton}
-          onPress={() => setShowHarvestModal(true)}
-        >
-          <Ionicons name="trending-up" size={24} color="#fff" />
-          <Text style={styles.actionButtonText}>{'Registrar Safra'}</Text>
-        </TouchableOpacity>
-      </View>
-
       <View style={styles.chartCard}>
         <Text style={styles.chartTitle}>Evolução Financeira</Text>
         <LineChart
