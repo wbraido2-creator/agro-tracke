@@ -53,6 +53,29 @@ export default function Clima() {
     }, 1000);
   }
 
+  function handleSearch() {
+    if (!searchCity.trim()) {
+      return;
+    }
+    
+    // Simular busca com dados mock personalizados
+    const newWeather = {
+      location: `${searchCity}, BR`,
+      temperature: Math.floor(Math.random() * 15) + 20, // 20-35°C
+      condition: ['Ensolarado', 'Parcialmente nublado', 'Nublado', 'Chuvoso'][Math.floor(Math.random() * 4)],
+      humidity: Math.floor(Math.random() * 30) + 50, // 50-80%
+      windSpeed: Math.floor(Math.random() * 20) + 5, // 5-25 km/h
+      forecast: mockWeatherData.forecast.map(day => ({
+        ...day,
+        temp: Math.floor(Math.random() * 10) + 20,
+        rain: Math.floor(Math.random() * 100),
+      })),
+    };
+    
+    setWeather(newWeather);
+    setCity(searchCity);
+  }
+
   return (
     <ScrollView
       style={styles.container}
