@@ -56,6 +56,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="clima"
+        options={{
+          title: 'Clima',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="cloud" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="perfil"
         options={{
           title: 'Perfil',
