@@ -162,7 +162,7 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
             <View style={styles.infoBox}>
               <Ionicons name="information-circle" size={20} color="#3b82f6" />
               <Text style={styles.infoText}>
-                Informe o prazo em dias. Exemplos: 30 (1 mês), 90 (3 meses), 180 (6 meses), 365 (1 ano)
+                Digite a data no formato DD/MM/AAAA (ex: 03/10/2025)
               </Text>
             </View>
 
