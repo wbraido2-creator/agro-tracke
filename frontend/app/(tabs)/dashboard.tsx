@@ -215,24 +215,6 @@ export default function Dashboard() {
           ))}
         </View>
       )}
-
-      <AddFieldModal
-        visible={showFieldModal}
-        onClose={() => setShowFieldModal(false)}
-        onSuccess={() => {
-          setShowFieldModal(false);
-          loadData();
-        }}
-      />
-
-      <AddHarvestModal
-        visible={showHarvestModal}
-        onClose={() => setShowHarvestModal(false)}
-        onSuccess={() => {
-          setShowHarvestModal(false);
-          loadData();
-        }}
-      />
     </ScrollView>
   );
 }
