@@ -29,6 +29,15 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="alertas"
+        options={{
+          title: 'Alertas',
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="notifications" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
         name="financeiro"
         options={{
           title: 'Financeiro',
