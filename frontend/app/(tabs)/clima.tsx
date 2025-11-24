@@ -88,15 +88,23 @@ export default function Clima() {
         <Text style={styles.headerTitle}>Previsão do Tempo</Text>
       </View>
 
-      <View style={styles.searchContainer}>
-        <Ionicons name="search" size={20} color="#64748b" style={styles.searchIcon} />
-        <TextInput
-          style={styles.searchInput}
-          placeholder="Buscar cidade..."
-          placeholderTextColor="#64748b"
-          value={city}
-          onChangeText={setCity}
-        />
+      <View style={styles.searchWrapper}>
+        <View style={styles.searchContainer}>
+          <Ionicons name="search" size={20} color="#64748b" style={styles.searchIcon} />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Digite a cidade..."
+            placeholderTextColor="#64748b"
+            value={searchCity}
+            onChangeText={setSearchCity}
+            onSubmitEditing={handleSearch}
+            returnKeyType="search"
+          />
+        </View>
+        <TouchableOpacity style={styles.searchButton} onPress={handleSearch}>
+          <Ionicons name="search" size={20} color="#fff" />
+          <Text style={styles.searchButtonText}>Buscar</Text>
+        </TouchableOpacity>
       </View>
 
       <View style={styles.currentWeather}>
