@@ -7,7 +7,6 @@ import {
   RefreshControl,
   Dimensions,
   ActivityIndicator,
-  TouchableOpacity,
 } from 'react-native';
 import { LineChart, PieChart } from 'react-native-chart-kit';
 import api from '../utils/api';
