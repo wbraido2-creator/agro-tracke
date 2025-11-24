@@ -98,7 +98,7 @@ export default function Producao() {
           <View style={styles.cardContent}>
             <Text style={styles.cardTitle}>{item.nome}</Text>
             <Text style={styles.cardSubtitle}>
-              {`${item.area_ha} hectares • ${item.cultura}`}
+              {item.area_ha}{' hectares • '}{item.cultura}
             </Text>
             {item.localizacao && (
               <Text style={styles.cardDescription}>{item.localizacao}</Text>
