@@ -307,6 +307,10 @@ const styles = StyleSheet.create({
     color: '#64748b',
     marginTop: 4,
   },
+  productivityContainer: {
+    marginTop: 8,
+    gap: 4,
+  },
   productivityBadge: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -314,14 +318,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     borderRadius: 8,
-    marginTop: 8,
     alignSelf: 'flex-start',
     gap: 4,
   },
   productivityText: {
-    fontSize: 12,
+    fontSize: 13,
     color: '#10b981',
     fontWeight: '600',
+  },
+  productivityInfo: {
+    fontSize: 11,
+    color: '#64748b',
+    marginTop: 2,
   },
   cardFooter: {
     marginTop: 12,
