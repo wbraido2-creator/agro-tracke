@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { LineChart, PieChart } from 'react-native-chart-kit';
 import api from '../utils/api';
-import { DashboardSummary } from '../types';
+import { DashboardSummary, Field } from '../types';
 import { Ionicons } from '@expo/vector-icons';
 import AddFieldModal from '../components/AddFieldModal';
 import AddHarvestModal from '../components/AddHarvestModal';
