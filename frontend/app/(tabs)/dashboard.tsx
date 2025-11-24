@@ -22,6 +22,8 @@ export default function Dashboard() {
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
+  const [showFieldModal, setShowFieldModal] = useState(false);
+  const [showHarvestModal, setShowHarvestModal] = useState(false);
 
   useEffect(() => {
     loadData();
