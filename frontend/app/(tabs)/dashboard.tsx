@@ -20,6 +20,7 @@ const screenWidth = Dimensions.get('window').width;
 
 export default function Dashboard() {
   const [summary, setSummary] = useState<DashboardSummary | null>(null);
+  const [fields, setFields] = useState<Field[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [showFieldModal, setShowFieldModal] = useState(false);
@@ -31,8 +32,12 @@ export default function Dashboard() {
 
   async function loadData() {
     try {
-      const response = await api.get('/api/dashboard/summary');
-      setSummary(response.data);
+      const [summaryRes, fieldsRes] = await Promise.all([
+        api.get('/api/dashboard/summary'),
+        api.get('/api/fields')
+      ]);
+      setSummary(summaryRes.data);
+      setFields(fieldsRes.data);
     } catch (error) {
       console.log('Error loading dashboard:', error);
     } finally {
