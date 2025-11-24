@@ -191,14 +191,38 @@ export default function Dashboard() {
 
       {summary?.dividas_pendentes && summary.dividas_pendentes.length > 0 && (
         <View style={styles.chartCard}>
-          <Text style={styles.chartTitle}>Dívidas Pendentes</Text>
+          <Text style={styles.chartTitle}>{'Dívidas Pendentes'}</Text>
           {summary.dividas_pendentes.map((divida) => (
             <View key={divida.id} style={styles.debtItem}>
               <View style={styles.debtInfo}>
                 <Text style={styles.debtCredor}>{divida.credor}</Text>
                 <Text style={styles.debtCultura}>{divida.cultura}</Text>
               </View>
-              <Text style={styles.debtValor}>R$ {divida.valor.toFixed(2)}</Text>
+              <Text style={styles.debtValor}>{`R$ ${divida.valor.toFixed(2)}`}</Text>
+            </View>
+          ))}
+        </View>
+      )}
+
+      {fields.length > 0 && (
+        <View style={styles.chartCard}>
+          <Text style={styles.chartTitle}>{'Meus Talhões'}</Text>
+          {fields.map((field) => (
+            <View key={field.id} style={styles.fieldItem}>
+              <View style={styles.fieldIcon}>
+                <Ionicons name="grid" size={20} color="#10b981" />
+              </View>
+              <View style={styles.fieldInfo}>
+                <Text style={styles.fieldName}>{field.nome}</Text>
+                <Text style={styles.fieldDetails}>
+                  {`${field.area_ha} ha • ${field.cultura}`}
+                </Text>
+                {field.produtividade_media && field.produtividade_media > 0 && (
+                  <Text style={styles.fieldProduction}>
+                    {`${field.produtividade_media} sacas/ha • ${field.total_sacas} sacas totais`}
+                  </Text>
+                )}
+              </View>
             </View>
           ))}
         </View>
