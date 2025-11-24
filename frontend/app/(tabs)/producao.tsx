@@ -111,7 +111,7 @@ export default function Producao() {
                   </Text>
                 </View>
                 <Text style={styles.productivityInfo}>
-                  {item.total_safras} {item.total_safras === 1 ? 'safra' : 'safras'} • {item.total_sacas} sacas
+                  {item.total_safras} {item.total_safras === 1 ? 'safra' : 'safras'} {'\u2022'} {item.total_sacas} sacas
                 </Text>
               </View>
             )}
