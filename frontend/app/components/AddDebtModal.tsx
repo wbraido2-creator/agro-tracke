@@ -24,7 +24,7 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
   const [valor, setValor] = useState('');
   const [credor, setCredor] = useState('');
   const [descricao, setDescricao] = useState('');
-  const [diasVencimento, setDiasVencimento] = useState('30');
+  const [dataVencimento, setDataVencimento] = useState('');
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit() {
@@ -33,17 +33,29 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
       return;
     }
 
-    if (!diasVencimento || parseInt(diasVencimento) < 1) {
-      Alert.alert('Erro', 'Informe um prazo válido para o vencimento');
+    if (!dataVencimento) {
+      Alert.alert('Erro', 'Informe a data de vencimento');
+      return;
+    }
+
+    // Validar formato da data
+    const dateRegex = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+    const match = dataVencimento.match(dateRegex);
+    if (!match) {
+      Alert.alert('Erro', 'Data inválida. Use o formato DD/MM/AAAA');
+      return;
+    }
+
+    const [_, dia, mes, ano] = match;
+    const vencimento = new Date(parseInt(ano), parseInt(mes) - 1, parseInt(dia));
+    
+    if (isNaN(vencimento.getTime())) {
+      Alert.alert('Erro', 'Data inválida');
       return;
     }
 
     setLoading(true);
     try {
-      // Calcular vencimento baseado nos dias informados
-      const vencimento = new Date();
-      vencimento.setDate(vencimento.getDate() + parseInt(diasVencimento));
-
       await api.post('/api/debts', {
         valor: parseFloat(valor),
         credor,
@@ -69,16 +81,24 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
     setValor('');
     setCredor('');
     setDescricao('');
-    setDiasVencimento('30');
+    setDataVencimento('');
   }
 
-  // Calcular data de vencimento
-  const calcularDataVencimento = () => {
-    if (!diasVencimento || parseInt(diasVencimento) < 1) return '';
-    const data = new Date();
-    data.setDate(data.getDate() + parseInt(diasVencimento));
-    return data.toLocaleDateString('pt-BR');
-  };
+  // Formatar data enquanto digita
+  function handleDateChange(text: string) {
+    // Remove tudo que não é número
+    const numbers = text.replace(/\D/g, '');
+    
+    let formatted = numbers;
+    if (numbers.length >= 2) {
+      formatted = numbers.slice(0, 2) + '/' + numbers.slice(2);
+    }
+    if (numbers.length >= 4) {
+      formatted = numbers.slice(0, 2) + '/' + numbers.slice(2, 4) + '/' + numbers.slice(4, 8);
+    }
+    
+    setDataVencimento(formatted);
+  }
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
