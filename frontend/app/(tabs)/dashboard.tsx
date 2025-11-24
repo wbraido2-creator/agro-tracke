@@ -132,6 +132,8 @@ export default function Dashboard() {
         </View>
       </View>
 
+      {/* BOTÕES REMOVIDOS - NÃO HÁ MAIS BOTÕES AQUI */}
+
       <View style={styles.chartCard}>
         <Text style={styles.chartTitle}>Evolução Financeira</Text>
         <LineChart
