@@ -28,6 +28,8 @@ export default function Financeiro() {
   const [showExpenseModal, setShowExpenseModal] = useState(false);
   const [showRevenueModal, setShowRevenueModal] = useState(false);
   const [showDebtModal, setShowDebtModal] = useState(false);
+  const [showFieldModal, setShowFieldModal] = useState(false);
+  const [showHarvestModal, setShowHarvestModal] = useState(false);
 
   useEffect(() => {
     loadData();
