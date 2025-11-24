@@ -358,4 +358,39 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#f59e0b',
   },
+  fieldItem: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    paddingVertical: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: '#334155',
+    gap: 12,
+  },
+  fieldIcon: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(16, 185, 129, 0.1)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  fieldInfo: {
+    flex: 1,
+  },
+  fieldName: {
+    fontSize: 16,
+    color: '#fff',
+    fontWeight: '600',
+    marginBottom: 4,
+  },
+  fieldDetails: {
+    fontSize: 14,
+    color: '#64748b',
+    marginBottom: 4,
+  },
+  fieldProduction: {
+    fontSize: 13,
+    color: '#10b981',
+    fontWeight: '600',
+  },
 });
