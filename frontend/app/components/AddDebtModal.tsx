@@ -134,24 +134,18 @@ export default function AddDebtModal({ visible, onClose, onSuccess }: Props) {
               onChangeText={setCredor}
             />
 
-            <Text style={styles.label}>Prazo de Vencimento (dias)</Text>
-            <View style={styles.prazoContainer}>
+            <Text style={styles.label}>Data de Vencimento</Text>
+            <View style={styles.dateInputContainer}>
+              <Ionicons name="calendar" size={20} color="#64748b" style={styles.dateIcon} />
               <TextInput
-                style={[styles.input, styles.prazoInput]}
-                placeholder="30"
+                style={[styles.input, styles.dateInput]}
+                placeholder="DD/MM/AAAA (ex: 03/10/2025)"
                 placeholderTextColor="#64748b"
-                value={diasVencimento}
-                onChangeText={setDiasVencimento}
+                value={dataVencimento}
+                onChangeText={handleDateChange}
                 keyboardType="number-pad"
+                maxLength={10}
               />
-              {diasVencimento && parseInt(diasVencimento) > 0 && (
-                <View style={styles.dataPreview}>
-                  <Ionicons name="calendar" size={16} color="#10b981" />
-                  <Text style={styles.dataPreviewText}>
-                    Vence em: {calcularDataVencimento()}
-                  </Text>
-                </View>
-              )}
             </View>
 
             <Text style={styles.label}>Descrição da Dívida</Text>
