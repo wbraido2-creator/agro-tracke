@@ -134,7 +134,7 @@ export default function Producao() {
           <View style={styles.cardContent}>
             <Text style={styles.cardTitle}>{item.field_name}</Text>
             <Text style={styles.cardSubtitle}>
-              {item.cultura} - {item.quantidade_sacas} sacas
+              {item.cultura} {'\u2022'} {item.quantidade_sacas} sacas
             </Text>
             <View style={styles.productivityBadge}>
               <Ionicons name="stats-chart" size={14} color="#10b981" />
