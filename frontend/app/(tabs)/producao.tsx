@@ -202,7 +202,7 @@ export default function Producao() {
                 : 'Nenhuma safra registrada'}
             </Text>
             <Text style={styles.emptySubtext}>
-              Toque no botão + para adicionar
+              {'Toque no botão + para adicionar'}
             </Text>
           </View>
         }
