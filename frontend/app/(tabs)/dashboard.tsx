@@ -344,4 +344,4 @@ const styles = StyleSheet.create({
     color: '#10b981',
     fontWeight: '600',
   },
-});
+});// Cache bust 1763982437
