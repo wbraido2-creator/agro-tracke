@@ -49,6 +49,9 @@ export interface Field {
   area_ha: number;
   cultura: string;
   localizacao?: string;
+  produtividade_media?: number;
+  total_safras?: number;
+  total_sacas?: number;
   created_at: string;
 }
 
