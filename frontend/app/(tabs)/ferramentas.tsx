@@ -297,7 +297,9 @@ export default function Ferramentas() {
           </View>
         )}
       </View>
-    </ScrollView>
+        </ScrollView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 
