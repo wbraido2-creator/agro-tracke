@@ -255,24 +255,22 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
   },
-  prazoContainer: {
-    gap: 12,
-  },
-  prazoInput: {
-    flex: 0,
-  },
-  dataPreview: {
+  dateInputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: 'rgba(16, 185, 129, 0.1)',
-    padding: 12,
-    borderRadius: 8,
-    gap: 8,
+    backgroundColor: '#0f172a',
+    borderWidth: 1,
+    borderColor: '#334155',
+    borderRadius: 12,
+    paddingHorizontal: 16,
   },
-  dataPreviewText: {
-    color: '#10b981',
-    fontSize: 14,
-    fontWeight: '600',
+  dateIcon: {
+    marginRight: 12,
+  },
+  dateInput: {
+    flex: 1,
+    borderWidth: 0,
+    paddingHorizontal: 0,
   },
   infoBox: {
     flexDirection: 'row',
