@@ -46,6 +46,16 @@ export default function Dashboard() {
     }
   }
 
+  // Calcular totais de produção
+  const productionTotals = {
+    totalArea: fields.reduce((sum, f) => sum + f.area_ha, 0),
+    totalSacas: fields.reduce((sum, f) => sum + (f.total_sacas || 0), 0),
+    totalFields: fields.length,
+    avgProductivity: fields.length > 0 
+      ? fields.reduce((sum, f) => sum + (f.produtividade_media || 0), 0) / fields.filter(f => f.produtividade_media).length
+      : 0,
+  };
+
   function onRefresh() {
     setRefreshing(true);
     loadData();
