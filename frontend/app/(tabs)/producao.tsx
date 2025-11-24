@@ -100,6 +100,21 @@ export default function Producao() {
             {item.localizacao && (
               <Text style={styles.cardDescription}>{item.localizacao}</Text>
             )}
+            
+            {/* Mostrar produtividade média se houver safras */}
+            {item.produtividade_media && item.produtividade_media > 0 && (
+              <View style={styles.productivityContainer}>
+                <View style={styles.productivityBadge}>
+                  <Ionicons name="stats-chart" size={16} color="#10b981" />
+                  <Text style={styles.productivityText}>
+                    {item.produtividade_media} sacas/ha
+                  </Text>
+                </View>
+                <Text style={styles.productivityInfo}>
+                  {item.total_safras} {item.total_safras === 1 ? 'safra' : 'safras'} • {item.total_sacas} sacas
+                </Text>
+              </View>
+            )}
           </View>
           <TouchableOpacity onPress={() => confirmDelete(item.id, 'field')}>
             <Ionicons name="trash-outline" size={20} color="#ef4444" />
