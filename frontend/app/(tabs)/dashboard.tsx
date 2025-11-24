@@ -247,6 +247,26 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: '#fff',
   },
+  quickActions: {
+    flexDirection: 'row',
+    padding: 12,
+    gap: 12,
+  },
+  actionButton: {
+    flex: 1,
+    backgroundColor: '#10b981',
+    padding: 16,
+    borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+  },
+  actionButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '600',
+  },
   chartCard: {
     backgroundColor: '#1e293b',
     margin: 12,
